@@ -1,5 +1,5 @@
 #include <Arduino.h>
-
+#include <Wire.h>
 #define flow_meter 21 //White Wire
 #define ir1 22 //Yellow wire
 #define ir2 23 //brown wire
@@ -13,9 +13,10 @@ LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
 const int stepPin = 7; //X.STEP
 const int dirPin = 8; // X.DIR
 //########################################
+void flowmeter();
 void stepper(int x);
-int irsensor1();
-int irsensor2();
+void irsensor1();
+void irsensor2();
 int counter=0;
 
 int xx=change_V_Of_Bottle;//the voulume of one battel 
@@ -59,7 +60,7 @@ void loop() {
  irsensor2(); 
  }
 //#############################################
-int irsensor1(){
+void irsensor1(){
  int read_ir1=digitalRead(ir1);
  //int y=0;
 // Serial.println(read_ir1);
@@ -105,7 +106,7 @@ break; //steper run
 
 }
 //############################################# 
-int irsensor2(){
+void irsensor2(){
 int read_ir2=digitalRead(ir2);
  //Serial.println(read_ir2);
  if(read_ir2==0){
