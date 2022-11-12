@@ -6,7 +6,7 @@ SoftwareSerial mySerial(2, 3);
 #define flow_meter 21         // White Wire
 #define ir1 22                // Yellow wire
 #define ir2 23                // brown wire
-#define pump 24               // orange wire
+#define pump_apple 24               // orange wire pump_apple for apple juice
 #define change_V_Of_Bottle 10 // change_V_Of_ one Bottle ,from here chang the volume of battle with mL
 #define en_stepper 25
 #include <LiquidCrystal.h>
@@ -70,13 +70,13 @@ void setup()
   // Sets the two pins as Outputs
   pinMode(stepPin, OUTPUT);
   pinMode(dirPin, OUTPUT);
-  pinMode(pump, OUTPUT);
+  pinMode(pump_apple, OUTPUT);
   pinMode(en_stepper, OUTPUT);
   attachInterrupt(digitalPinToInterrupt(flow_meter), flow, RISING);
   sei();
   current_millis = millis();
   previous_millis = current_millis;
-  digitalWrite(pump, HIGH);
+  digitalWrite(pump_apple, HIGH);
 }
 void loop()
 {
@@ -99,8 +99,8 @@ void irsensor1()
     {
       read_ir1 = digitalRead(ir1);
 
-      // digitalWrite(pump, HIGH);
-      digitalWrite(pump, LOW);
+      // digitalWrite(pump_apple, HIGH);
+      digitalWrite(pump_apple, LOW);
 
       //#############################editing########
 
@@ -115,8 +115,8 @@ void irsensor1()
       lcd.print("L");
       if (volume == xx)
       {
-        // digitalWrite(pump, LOW);
-        digitalWrite(pump, HIGH);
+        // digitalWrite(pump_apple, LOW);
+        digitalWrite(pump_apple, HIGH);
         counter++;
         xx = volume + change_V_Of_Bottle; // change the volume
         flowmeter();
