@@ -85,7 +85,7 @@ void setup()
 }
 void loop()
 {
-  select_type();
+ type_juice=  select_type();
   flowmeter();
   stepper(1);
   irsensor1();
@@ -282,9 +282,29 @@ int select_type()
 
 
 //######################### start pump #############################
-
+// if condation is true the pump will be on
 void pump_start(int pump_type,bool condation){
 
+if (pump_type == 0 ){
+
+  if(condation){
+    digitalWrite(pump_apple, LOW);  // pump apple is on 
+  }
+  else{
+     digitalWrite(pump_apple, HIGH);  // pump apple is off
+  }
+
+}
+if (pump_type == 1 ){
+
+  if(condation){
+    digitalWrite(pump_orange, LOW);  // pump orange is on 
+  }
+  else{
+     digitalWrite(pump_orange, HIGH);  // pump orange is off
+  }
+
+}
 }
 //########################### clear lcd ##########################
 void clearData()
