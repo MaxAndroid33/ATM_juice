@@ -72,12 +72,14 @@ void setup()
   pinMode(stepPin, OUTPUT);
   pinMode(dirPin, OUTPUT);
   pinMode(pump_apple, OUTPUT);
+  pinMode(pump_orange, OUTPUT);
   pinMode(en_stepper, OUTPUT);
   attachInterrupt(digitalPinToInterrupt(flow_meter), flow, RISING);
   sei();
   current_millis = millis();
   previous_millis = current_millis;
   digitalWrite(pump_apple, HIGH);
+  digitalWrite(pump_orange, HIGH);
 }
 void loop()
 {
