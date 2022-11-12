@@ -15,6 +15,7 @@ SoftwareSerial mySerial(2, 3);
 LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
 
 #define data_length 2
+int type_juice;
 char Data[data_length];
 char Master[data_length] = "1";
 byte data_count = 0, master_count = 0;
