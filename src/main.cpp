@@ -247,7 +247,7 @@ int select_type()
       {
         lcd.print("Apple");
         delay(10000);
-        break;
+        return 0; // 0 means is Apple 
       }
       if (!strcmp(Data, "2")) // equal to (strcmp(Data, Master) == 0)
       {
