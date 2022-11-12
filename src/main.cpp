@@ -107,7 +107,8 @@ void irsensor1()
       read_ir1 = digitalRead(ir1);
 
       // digitalWrite(pump_apple, HIGH);
-      digitalWrite(pump_apple, LOW);
+      //digitalWrite(pump_apple, LOW);
+      pump_start(type_juice,true);  // start the pump
 
       //#############################editing########
 
@@ -123,7 +124,8 @@ void irsensor1()
       if (volume == xx)
       {
         // digitalWrite(pump_apple, LOW);
-        digitalWrite(pump_apple, HIGH);
+        //digitalWrite(pump_apple, HIGH);
+        pump_start(type_juice,false); // stop the pump
         counter++;
         xx = volume + change_V_Of_Bottle; // change the volume
         flowmeter();
