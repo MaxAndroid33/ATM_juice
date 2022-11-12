@@ -37,6 +37,9 @@ const int stepPin = 7; // X.STEP
 const int dirPin = 8;  // X.DIR
 //########################################
 int select_type();
+
+
+
 void flowmeter();
 void stepper(int x);
 void irsensor1();
