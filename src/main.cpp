@@ -317,5 +317,5 @@ void clearData()
   {                         // This can be used for any array size,
     Data[data_count--] = 0; // clear array for new data
   }
-  int choies = int(Data);
+  
 }
