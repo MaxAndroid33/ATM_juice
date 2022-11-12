@@ -37,9 +37,7 @@ const int stepPin = 7; // X.STEP
 const int dirPin = 8;  // X.DIR
 //########################################
 int select_type();
-
-
-
+void pump_start(int pump_type,bool condation);
 void flowmeter();
 void stepper(int x);
 void irsensor1();
@@ -86,6 +84,7 @@ void setup()
 }
 void loop()
 {
+  select_type();
   flowmeter();
   stepper(1);
   irsensor1();
@@ -275,6 +274,18 @@ int select_type()
   }
 }
 
+
+
+
+
+
+
+//######################### start pump #############################
+
+void pump_start(int pump_type,bool condation){
+
+}
+//########################### clear lcd ##########################
 void clearData()
 {
   while (data_count != 0)
