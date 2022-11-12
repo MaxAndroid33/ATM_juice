@@ -85,6 +85,7 @@ void setup()
 }
 void loop()
 {
+  clearData();
  type_juice=  select_type();
   flowmeter();
   stepper(1);
