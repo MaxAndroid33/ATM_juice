@@ -253,6 +253,7 @@ int select_type()
       {
         lcd.print("orange");
         delay(10000);
+        return 1 ; // 1 means is orange
       }
 
       else
