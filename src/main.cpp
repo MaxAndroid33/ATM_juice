@@ -37,7 +37,7 @@ Keypad myKeypad = Keypad(makeKeymap(hexaKeys), rowPins, colPins, ROWS, COLS);
 const int stepPin = 7; // X.STEP
 const int dirPin = 8;  // X.DIR
 //########################################
-int select_type();
+void select_type();
 void clearData();
 void pump_start(int pump_type,bool condation);
 void flowmeter();
@@ -87,7 +87,7 @@ void setup()
 void loop()
 {
   clearData();
- type_juice=  select_type();
+  select_type();
   flowmeter();
   stepper(1);
   irsensor1();
@@ -228,7 +228,7 @@ void stepper(int x)
 }
 
 // ########################## Select type of juice ###################################
-int select_type()
+void select_type()
 {
   while (1)
   {
@@ -257,13 +257,15 @@ int select_type()
       {
         lcd.print("Apple");
         delay(10000);
-        return 0; // 0 means is Apple 
+        type_juice =0; // 0 means is Apple 
+        break;
       }
       if (!strcmp(Data, "2")) // equal to (strcmp(Data, Master) == 0)
       {
         lcd.print("orange");
         delay(10000);
-        return 1 ; // 1 means is orange
+        type_juice =1;  // 1 means is orange
+        break;
       }
 
       else
@@ -313,6 +315,7 @@ if (pump_type == 1 ){
 //########################### clear lcd ##########################
 void clearData()
 {
+  lcd.clear();
   while (data_count != 0)
   {                         // This can be used for any array size,
     Data[data_count--] = 0; // clear array for new data
