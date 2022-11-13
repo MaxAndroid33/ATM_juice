@@ -92,6 +92,8 @@ void loop()
   stepper(1);
   irsensor1();
   irsensor2();
+  lcd.clear();
+  
 }
 //#############################################
 void irsensor1()
