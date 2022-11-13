@@ -3,7 +3,9 @@
 #include <Keypad.h>
 #include <SoftwareSerial.h>
 SoftwareSerial mySerial(2, 3);
-#define flow_meter 21         // White Wire
+#define flow_meter_apple 21         // White Wire for apple juice
+#define flow_meter_orange 20         // White Wire for orange juice
+
 #define ir1 22                // Yellow wire
 #define ir2 23                // brown wire
 #define pump_apple 24               // orange wire pump_apple for apple juice
@@ -67,7 +69,7 @@ void setup()
   // put your setup code here, to run once:
   Serial.begin(9600);
   lcd.begin(16, 2);
-  pinMode(flow_meter, INPUT);
+  pinMode(flow_meter_apple, INPUT);
 
   pinMode(ir1, INPUT);
   pinMode(ir2, INPUT);
@@ -77,7 +79,7 @@ void setup()
   pinMode(pump_apple, OUTPUT);
   pinMode(pump_orange, OUTPUT);
   pinMode(en_stepper, OUTPUT);
-  attachInterrupt(digitalPinToInterrupt(flow_meter), flow, RISING);
+  attachInterrupt(digitalPinToInterrupt(flow_meter_apple), flow, RISING);
   sei();
   current_millis = millis();
   previous_millis = current_millis;
