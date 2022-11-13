@@ -83,16 +83,18 @@ void setup()
   previous_millis = current_millis;
   digitalWrite(pump_apple, HIGH);
   digitalWrite(pump_orange, HIGH);
+  select_type();
 }
 void loop()
 {
-  clearData();
-  select_type();
+  
+  //select_type();
   flowmeter();
   stepper(1);
   irsensor1();
   irsensor2();
-  lcd.clear();
+  //lcd.clear();
+ // select_type();
 
 }
 //#############################################
@@ -164,8 +166,10 @@ void irsensor2()
     while (1)
     {
       read_ir2 = digitalRead(ir2);
-      if (read_ir2 == 1)
+      if (read_ir2 == 1){
+      select_type();
         break;
+      }
     }
   }
   stepper(1); // steper run
