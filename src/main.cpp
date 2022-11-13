@@ -219,9 +219,10 @@ void flowmeter()
     lcd.print("mL");
     // lcd.setCursor(8,0);lcd.print("Q=");lcd.setCursor(10,0);lcd.print(flow_per_mint/60,4);lcd.setCursor(14,1);lcd.print("L/s");
     lcd.setCursor(0, 1);
-    lcd.print("NO.Apple=");
+    lcd.print("NO.A=");
     lcd.print(counter_apple);
-    lcd.print(" NO.Orange=");
+     lcd.setCursor(0, 7);
+    lcd.print("NO.O=");
     lcd.print(counter_orange);
     flow_frequency = 0;
     // Serial.print("Volume = ");Serial.print(volume,4);Serial.print("L ");
