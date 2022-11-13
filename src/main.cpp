@@ -2,21 +2,23 @@
 #include <Wire.h>
 #include <Keypad.h>
 #include <SoftwareSerial.h>
-SoftwareSerial mySerial(2, 3);
+#include <LiquidCrystal.h>
+
+
 #define flow_meter_apple 21         // White Wire for apple juice
 #define flow_meter_orange 20         // White Wire for orange juice
-
 #define ir1 22                // Yellow wire
 #define ir2 23                // brown wire
 #define pump_apple 24               // orange wire pump_apple for apple juice
 #define pump_orange 26               // orange wire pump_orange for orange juice
 #define change_V_Of_Bottle 5 // change_V_Of_ one Bottle ,from here chang the volume of battle with mL
 #define en_stepper 25
-#include <LiquidCrystal.h>
+#define data_length 2
+
 // Initialise the LCD with the arduino. LiquidCrystal(rs, enable, d4, d5, d6, d7)
 LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+SoftwareSerial mySerial(2, 3);
 
-#define data_length 2
 int type_juice;
 char Data[data_length];
 char Master[data_length] = "1";
@@ -46,8 +48,8 @@ void flowmeter();
 void stepper(int x);
 void irsensor1();
 void irsensor2();
-int counter = 0;
-
+int counter_apple = 0;
+int counter_orange = 0;
 int xx = change_V_Of_Bottle; // the voulume of one battel
 volatile int flow_frequency = 0;
 volatile int flow_frequency2 = 0;
@@ -134,7 +136,12 @@ void irsensor1()
         // digitalWrite(pump_apple, LOW);
         //digitalWrite(pump_apple, HIGH);
         pump_start(type_juice,false); // stop the pump
-        counter++;
+        if (type_juice){
+          counter_apple++;
+        }else{
+          counter_orange++;
+        }
+        //counter_apple++;
         xx = volume + change_V_Of_Bottle; // change the volume
         flowmeter();
         break;
@@ -212,8 +219,10 @@ void flowmeter()
     lcd.print("mL");
     // lcd.setCursor(8,0);lcd.print("Q=");lcd.setCursor(10,0);lcd.print(flow_per_mint/60,4);lcd.setCursor(14,1);lcd.print("L/s");
     lcd.setCursor(0, 1);
-    lcd.print("NO.bottle=");
-    lcd.print(counter);
+    lcd.print("NO.Apple=");
+    lcd.print(counter_apple);
+    lcd.print(" NO.Orange=");
+    lcd.print(counter_orange);
     flow_frequency = 0;
     // Serial.print("Volume = ");Serial.print(volume,4);Serial.print("L ");
     // Serial.print("Q(L/s) = ");Serial.print(flow_per_mint/60,4);Serial.print(" ");
@@ -306,7 +315,8 @@ void pump_start(int pump_type,bool condation){
 if (pump_type == 0 ){
 
   if(condation){
-    digitalWrite(pump_apple, LOW);  // pump apple is on 
+    digitalWrite(pump_apple, LOW);  // pump apple is on
+
   }
   else{
      digitalWrite(pump_apple, HIGH);  // pump apple is off
