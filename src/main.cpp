@@ -236,6 +236,8 @@ void stepper(int x)
 // ########################## Select type of juice ###################################
 void select_type()
 {
+  lcd.clear();
+  clearData();
   while (1)
   {
 
