@@ -93,7 +93,7 @@ void loop()
   irsensor1();
   irsensor2();
   lcd.clear();
-  
+
 }
 //#############################################
 void irsensor1()
@@ -258,14 +258,14 @@ void select_type()
       if (!strcmp(Data, Master)) // equal to (strcmp(Data, Master) == 0)
       {
         lcd.print("Apple");
-        delay(10000);
+        delay(1000);
         type_juice =0; // 0 means is Apple 
         break;
       }
       if (!strcmp(Data, "2")) // equal to (strcmp(Data, Master) == 0)
       {
         lcd.print("orange");
-        delay(10000);
+        delay(1000);
         type_juice =1;  // 1 means is orange
         break;
       }
@@ -274,7 +274,7 @@ void select_type()
       {
         lcd.print("INCORRECT");
 
-        delay(10000);
+        delay(1000);
       }
       delay(1000); // added 1 second delay to make sure the password is completely shown on screen before it gets cleared.
       lcd.clear();
