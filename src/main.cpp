@@ -7,7 +7,7 @@ SoftwareSerial mySerial(2, 3);
 #define ir1 22                // Yellow wire
 #define ir2 23                // brown wire
 #define pump_apple 24               // orange wire pump_apple for apple juice
-#define pump_orange 25               // orange wire pump_orange for orange juice
+#define pump_orange 26               // orange wire pump_orange for orange juice
 #define change_V_Of_Bottle 5 // change_V_Of_ one Bottle ,from here chang the volume of battle with mL
 #define en_stepper 25
 #include <LiquidCrystal.h>
