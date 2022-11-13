@@ -70,7 +70,7 @@ void setup()
   Serial.begin(9600);
   lcd.begin(16, 2);
   pinMode(flow_meter_apple, INPUT);
-
+  pinMode(flow_meter_orange, INPUT); 
   pinMode(ir1, INPUT);
   pinMode(ir2, INPUT);
   // Sets the two pins as Outputs
@@ -80,6 +80,7 @@ void setup()
   pinMode(pump_orange, OUTPUT);
   pinMode(en_stepper, OUTPUT);
   attachInterrupt(digitalPinToInterrupt(flow_meter_apple), flow, RISING);
+  attachInterrupt(digitalPinToInterrupt(flow_meter_orange), flow, RISING);
   sei();
   current_millis = millis();
   previous_millis = current_millis;
