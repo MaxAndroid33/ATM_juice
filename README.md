@@ -25,3 +25,7 @@ The bottel filling industry project offers several benefits including:
 
 ## Conclusion
 ATM_juice project is a step towards the automation of the bottle filling process and offers several benefits to the industry. With the use of sensors and actuators, the project offers a more efficient, safe and high-quality bottel filling process. The ability to fill three types of juices offers added flexibility and convenience to the industry.
+
+## License
+
+This project is licensed under the MIT License. Please see the [LICENSE](LICENSE) file for more information.
